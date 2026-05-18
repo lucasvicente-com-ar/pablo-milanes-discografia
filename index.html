@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pablo Milanés - Discografía Completa</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a25;
+            --bg-card-hover: #222233;
+            --gold: #d4a853;
+            --gold-light: #e8c97a;
+            --gold-dark: #b8923f;
+            --text-primary: #f0ece4;
+            --text-secondary: #a8a4a0;
+            --text-muted: #6b6866;
+            --border: #2a2a35;
+            --accent-blue: #4a6fa5;
+            --accent-green: #5a8f5a;
+            --accent-red: #8f4a4a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1520 30%, #0f1520 60%, #0a0a0f 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 50%, rgba(212, 168, 83, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 100px,
+                rgba(212, 168, 83, 0.01) 100px,
+                rgba(212, 168, 83, 0.01) 200px
+            );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 0 0 60px rgba(212, 168, 83, 0.3);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .hero-bio {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--gold);
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.6rem 1rem 0.6rem 2.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            width: 280px;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 168, 83, 0.15);
+        }
+
+        .search-box::before {
+            content: '\1F50D';
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.85rem;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold);
+            color: var(--bg-primary);
+            border-color: var(--gold);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--border), var(--gold));
+        }
+
+        /* Decade Header */
+        .decade-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin: 3rem 0 2rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .decade-header::before {
+            content: '';
+            position: absolute;
+            left: -3.35rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(212, 168, 83, 0.5);
+        }
+
+        /* Album Card */
+        .album-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .album-card:hover {
+            border-color: var(--gold-dark);
+            box-shadow: 0 8px 40px rgba(212, 168, 83, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .album-header {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            user-select: none;
+        }
+
+        .album-cover {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .album-card:hover .album-cover {
+            border-color: var(--gold-dark);
+            box-shadow: 0 4px 20px rgba(212, 168, 83, 0.2);
+        }
+
+        .album-cover-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--bg-card-hover), var(--bg-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0.4;
+            border: 2px solid var(--border);
+        }
+
+        .album-header:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .album-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            min-width: 70px;
+        }
+
+        .album-info {
+            flex: 1;
+        }
+
+        .album-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .album-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .album-type {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .type-estudio {
+            background: rgba(74, 111, 165, 0.2);
+            color: var(--accent-blue);
+        }
+
+        .type-vivo {
+            background: rgba(143, 74, 74, 0.2);
+            color: var(--accent-red);
+        }
+
+        .type-recopilatorio {
+            background: rgba(90, 143, 90, 0.2);
+            color: var(--accent-green);
+        }
+
+        .type-colaboraciones {
+            background: rgba(212, 168, 83, 0.2);
+            color: var(--gold);
+        }
+
+        .track-count {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .album-toggle {
+            font-size: 1.5rem;
+            color: var(--gold);
+            transition: transform 0.3s;
+        }
+
+        .album-card.open .album-toggle {
+            transform: rotate(180deg);
+        }
+
+        /* Tracks List */
+        .tracks-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .album-card.open .tracks-container {
+            max-height: 10000px;
+        }
+
+        .tracks-list {
+            padding: 0 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .track-item {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(42, 42, 53, 0.5);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 8px;
+            margin: 0.25rem 0;
+        }
+
+        .track-item:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .track-item:last-child {
+            border-bottom: none;
+        }
+
+        .track-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .track-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            min-width: 30px;
+            opacity: 0.7;
+        }
+
+        .track-title {
+            font-size: 1rem;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .has-lyrics-badge {
+            font-size: 0.7rem;
+            background: rgba(212, 168, 83, 0.15);
+            color: var(--gold);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .track-lyrics {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            margin-top: 0;
+        }
+
+        .track-item.expanded .track-lyrics {
+            max-height: 2000px;
+            margin-top: 1rem;
+        }
+
+        .track-lyrics pre {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+        }
+
+        /* Search Results */
+        .search-results-info {
+            padding: 1rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .no-results-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .album-header {
+                padding: 1rem 1.2rem;
+                flex-wrap: wrap;
+            }
+
+            .album-cover, .album-cover-placeholder {
+                width: 60px;
+                height: 60px;
+            }
+
+            .album-year {
+                font-size: 1.3rem;
+                min-width: auto;
+            }
+
+            .album-title {
+                font-size: 1.1rem;
+            }
+
+            .tracks-list {
+                padding: 0 1rem 1rem;
+            }
+
+            .track-item {
+                padding: 0.8rem 1rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .search-box input {
+                width: 200px;
+            }
+
+            .nav-inner {
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .album-card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-icon">🎸</div>
+            <h1>Pablo Milanés</h1>
+            <p class="hero-subtitle">La voz eterna de la Nueva Trova Cubana</p>
+            <p class="hero-bio" id="bio"></p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number" id="stat-albums">0</div>
+                    <div class="stat-label">Álbumes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="stat-tracks">0</div>
+                    <div class="stat-label">Canciones</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="stat-lyrics">0</div>
+                    <div class="stat-label">Con Letras</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="stat-years">0</div>
+                    <div class="stat-label">Años de Música</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">&#8595;</div>
+    </section>
+
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <div class="nav-brand">Pablo Milanés</div>
+            <div class="nav-controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar canción o álbum...">
+                </div>
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="Estudio">Estudio</button>
+                <button class="filter-btn" data-filter="En Vivo">En Vivo</button>
+                <button class="filter-btn" data-filter="Recopilatorio">Recopilatorios</button>
+                <button class="filter-btn" data-filter="Colaboraciones">Colaboraciones</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main" id="main">
+        <div class="timeline" id="timeline"></div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-quote">"Esto no puede ser no más que una canción, quisiera fuera una declaración de amor..."</p>
+        <p>Pablo Milanés (1943 - 2022) — Discografía completa con letras</p>
+    </footer>
+
+    <script>
+        let data = null;
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                data = await response.json();
+                init();
+            } catch (e) {
+                console.error('Error loading data:', e);
+                document.getElementById('timeline').innerHTML = '<p style="text-align:center;color:#888;">Error al cargar los datos. Asegúrate de abrir el archivo desde un servidor web.</p>';
+            }
+        }
+
+        function init() {
+            document.getElementById('bio').textContent = data.bio;
+
+            let totalTracks = 0;
+            let totalLyrics = 0;
+            data.albums.forEach(album => {
+                totalTracks += album.tracks.length;
+                album.tracks.forEach(track => {
+                    if (track.lyrics) totalLyrics++;
+                });
+            });
+
+            const years = data.albums.map(a => a.year);
+            const yearSpan = Math.max(...years) - Math.min(...years);
+
+            animateNumber('stat-albums', data.albums.length);
+            animateNumber('stat-tracks', totalTracks);
+            animateNumber('stat-lyrics', totalLyrics);
+            animateNumber('stat-years', yearSpan);
+
+            renderTimeline();
+            setupEventListeners();
+        }
+
+        function animateNumber(id, target) {
+            const el = document.getElementById(id);
+            let current = 0;
+            const step = Math.ceil(target / 40);
+            const interval = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(interval);
+                }
+                el.textContent = current;
+            }, 30);
+        }
+
+        function renderTimeline() {
+            const timeline = document.getElementById('timeline');
+            timeline.innerHTML = '';
+
+            const filteredAlbums = getFilteredAlbums();
+
+            if (filteredAlbums.length === 0) {
+                timeline.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">🔍</div>
+                        <p>No se encontraron resultados</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let currentDecade = null;
+
+            filteredAlbums.forEach((album, index) => {
+                const decade = Math.floor(album.year / 10) * 10;
+
+                if (decade !== currentDecade) {
+                    currentDecade = decade;
+                    const decadeEl = document.createElement('h2');
+                    decadeEl.className = 'decade-header';
+                    decadeEl.textContent = `Década de ${decade}s`;
+                    timeline.appendChild(decadeEl);
+                }
+
+                const albumEl = createAlbumCard(album, index);
+                timeline.appendChild(albumEl);
+            });
+        }
+
+        function getFilteredAlbums() {
+            let albums = data.albums;
+
+            if (currentFilter !== 'all') {
+                albums = albums.filter(a => a.type === currentFilter);
+            }
+
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                albums = albums.filter(album => {
+                    if (album.title.toLowerCase().includes(term)) return true;
+                    return album.tracks.some(t => t.title.toLowerCase().includes(term));
+                }).map(album => {
+                    const matchingTracks = album.tracks.filter(t =>
+                        t.title.toLowerCase().includes(term) ||
+                        (t.lyrics && t.lyrics.toLowerCase().includes(term))
+                    );
+                    return matchingTracks.length > 0 && matchingTracks.length < album.tracks.length
+                        ? { ...album, tracks: matchingTracks, filtered: true }
+                        : album;
+                });
+            }
+
+            return albums;
+        }
+
+        function createAlbumCard(album, index) {
+            const card = document.createElement('div');
+            card.className = 'album-card';
+            card.style.animationDelay = `${index * 0.05}s`;
+
+            const typeClass = getTypeClass(album.type);
+            const tracksWithLyrics = album.tracks.filter(t => t.lyrics).length;
+
+            card.innerHTML = `
+                <div class="album-header" onclick="toggleAlbum(this)">
+                    <div class="album-year">${album.year}</div>
+                    ${album.cover
+                        ? `<img class="album-cover" src="${album.cover}" alt="${album.title}" loading="lazy" onerror="this.outerHTML='<div class=\\'album-cover-placeholder\\'>🎵</div>'">`
+                        : `<div class="album-cover-placeholder">🎵</div>`
+                    }
+                    <div class="album-info">
+                        <div class="album-title">${album.title}</div>
+                        <div class="album-meta">
+                            <span class="album-type ${typeClass}">${album.type}</span>
+                            <span class="track-count">${album.tracks.length} canciones · ${tracksWithLyrics} con letra</span>
+                        </div>
+                    </div>
+                    <div class="album-toggle">&#9660;</div>
+                </div>
+                <div class="tracks-container">
+                    <div class="tracks-list">
+                        ${album.tracks.map((track, i) => createTrackItem(track, i)).join('')}
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function createTrackItem(track, index) {
+            const hasLyrics = track.lyrics && track.lyrics.length > 0;
+            return `
+                <div class="track-item" onclick="toggleTrack(this)">
+                    <div class="track-header">
+                        <span class="track-number">${String(index + 1).padStart(2, '0')}</span>
+                        <span class="track-title">${track.title}</span>
+                        ${hasLyrics ? '<span class="has-lyrics-badge">Letra</span>' : ''}
+                    </div>
+                    ${hasLyrics ? `<div class="track-lyrics"><pre>${escapeHtml(track.lyrics)}</pre></div>` : ''}
+                </div>
+            `;
+        }
+
+        function getTypeClass(type) {
+            switch (type) {
+                case 'Estudio': return 'type-estudio';
+                case 'En Vivo': return 'type-vivo';
+                case 'Recopilatorio': return 'type-recopilatorio';
+                case 'Colaboraciones': return 'type-colaboraciones';
+                default: return 'type-estudio';
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function toggleAlbum(header) {
+            const card = header.closest('.album-card');
+            card.classList.toggle('open');
+        }
+
+        function toggleTrack(item) {
+            const lyrics = item.querySelector('.track-lyrics');
+            if (lyrics) {
+                item.classList.toggle('expanded');
+            }
+        }
+
+        function setupEventListeners() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value.trim();
+                renderTimeline();
+            });
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter;
+                    renderTimeline();
+                });
+            });
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
