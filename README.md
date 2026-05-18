@@ -123,3 +123,7 @@ Las letras y portadas pertenecen a sus respectivos autores y titulares de derech
 ---
 
 *"Yo pisaré las calles nuevamente..."* — Pablo Milanés
+
+---
+
+**by: Lucas M. Vicente & iAs**
