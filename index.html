@@ -435,6 +435,25 @@
             max-height: 10000px;
         }
 
+        .album-description {
+            padding: 0 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-style: italic;
+            background: rgba(212, 168, 83, 0.03);
+        }
+
+        .album-description::before {
+            content: '\201C';
+            font-size: 2rem;
+            color: var(--gold);
+            line-height: 0;
+            vertical-align: -0.4em;
+            margin-right: 0.2em;
+        }
+
         .tracks-list {
             padding: 0 2rem 1.5rem;
             border-top: 1px solid var(--border);
@@ -802,6 +821,7 @@
                     <div class="album-toggle">&#9660;</div>
                 </div>
                 <div class="tracks-container">
+                    ${album.description ? `<div class="album-description">${album.description}</div>` : ''}
                     <div class="tracks-list">
                         ${album.tracks.map((track, i) => createTrackItem(track, i)).join('')}
                     </div>
