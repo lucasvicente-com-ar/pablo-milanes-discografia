@@ -16,10 +16,10 @@ Este repositorio reúne **toda su discografía oficial** en un solo lugar: cada 
 |---|---|
 | Álbumes | 48 |
 | Canciones | 586 |
-| Con letras completas | 489 (83%) |
+| Con letras completas | 558 (95.2%) |
 | Portadas originales | 48 |
 | Período cubierto | 1973 – 2021 |
-| Fuente de datos | [milanespablo.com](https://www.milanespablo.com/discografia/) (sitio oficial) |
+| Fuente de datos | Múltiples fuentes: [milanespablo.com](https://www.milanespablo.com/discografia/), Genius, Cancioneros, CMTV, Musixmatch, letras.com |
 
 ## Discografía cronológica
 
@@ -69,9 +69,9 @@ Este repositorio reúne **toda su discografía oficial** en un solo lugar: cada 
 | 2014 | Canción de Otoño | Estudio | 14 |
 | 2016 | Flores del Futuro | Estudio | 10 |
 | 2017 | Amor | Estudio | 11 |
-| 2018 | Flor Oculta de la Vieja Trova | Estudio | 18 |
+| 2018 | Flor Oculta de la Vieja Trova | Estudio | 17 |
 | 2019 | Mi Habana | Estudio | 21 |
-| 2019 | Standards de Jazz | Estudio | 10 |
+| 2019 | Standards de Jazz | Estudio | 9 |
 | 2021 | Antología Personal | Compilatorio | 42 |
 
 ## Estructura del repositorio
@@ -114,7 +114,16 @@ Luego abre `http://localhost:8000`
 
 ## Fuente de datos
 
-Todos los datos —tracklists, letras y portadas— fueron obtenidos del sitio oficial **[milanespablo.com](https://www.milanespablo.com/discografia/)**. Este proyecto es un archivo de preservación, no una fuente original de contenido.
+Los datos fueron recopilados de múltiples fuentes:
+
+- **[milanespablo.com](https://www.milanespablo.com/discografia/)** — sitio oficial (tracklists, portadas, descripciones, álbumes)
+- **Genius** — letras de canciones
+- **Cancioneros.com** — letras de canciones
+- **CMTV.com.ar** — letras de canciones
+- **Musixmatch** — letras de canciones
+- **Letras.com** — letras de canciones
+
+Este proyecto es un archivo de preservación, no una fuente original de contenido.
 
 ## Nota sobre derechos
 
