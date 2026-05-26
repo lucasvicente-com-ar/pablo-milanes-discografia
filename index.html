@@ -636,6 +636,70 @@
             display: none !important;
         }
 
+        /* --- MODO CLARO PRÉMIUM --- */
+        body.light-theme {
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #f5f2eb;
+            --bg-card: #ffffff;
+            --bg-card-hover: #fcf9f2;
+            --gold: #b8923f;
+            --gold-light: #8c6239;
+            --gold-dark: #d4a853;
+            --text-primary: #2c251b;
+            --text-secondary: #6b6051;
+            --text-muted: #998c7c;
+            --border: #e8e2d5;
+            --accent-blue: #3a5f8a;
+            --accent-green: #457345;
+            --accent-red: #7a3f3f;
+        }
+
+        body.light-theme .hero {
+            background: linear-gradient(135deg, #fdfbf7 0%, #f7f3e8 30%, #ebf0f5 60%, #fdfbf7 100%);
+        }
+        body.light-theme .hero::before {
+            background: radial-gradient(ellipse at 50% 50%, rgba(184, 146, 63, 0.05) 0%, transparent 70%);
+        }
+        body.light-theme .hero::after {
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 100px,
+                rgba(184, 146, 63, 0.005) 100px,
+                rgba(184, 146, 63, 0.005) 200px
+            );
+        }
+        body.light-theme .hero-quote-box {
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(184, 146, 63, 0.2);
+            box-shadow: 0 8px 32px rgba(184, 146, 63, 0.06);
+        }
+        body.light-theme .track-lyrics pre {
+            background: rgba(0, 0, 0, 0.02);
+            border-left-color: var(--gold);
+        }
+
+        .theme-toggle-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            user-select: none;
+        }
+        .theme-toggle-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 168, 83, 0.08);
+        }
+
         /* --- MEJORAS PRÉMIUM --- */
 
         /* Buscador Mejorado */
@@ -1227,6 +1291,7 @@
                 <button class="filter-btn" data-filter="En Vivo">En Vivo</button>
                 <button class="filter-btn" data-filter="Recopilatorio">Recopilatorios</button>
                 <button class="filter-btn" data-filter="Colaboraciones">Colaboraciones</button>
+                <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Cambiar tema (Claro/Oscuro)">☀️ Claro</button>
             </div>
         </div>
     </nav>
@@ -1308,7 +1373,36 @@
         let currentModalTextSize = 1.1;
         let activeObserver = null;
 
+        // --- MANEJO DE TEMA CLARO/OSCURO ---
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('themeToggleBtn');
+            if (body.classList.contains('light-theme')) {
+                body.classList.remove('light-theme');
+                if (btn) btn.innerHTML = '☀️ Claro';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.add('light-theme');
+                if (btn) btn.innerHTML = '🌙 Oscuro';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const body = document.body;
+            const btn = document.getElementById('themeToggleBtn');
+            if (savedTheme === 'light') {
+                body.classList.add('light-theme');
+                if (btn) btn.innerHTML = '🌙 Oscuro';
+            } else {
+                body.classList.remove('light-theme');
+                if (btn) btn.innerHTML = '☀️ Claro';
+            }
+        }
+
         function init() {
+            applySavedTheme();
             document.getElementById('bio').textContent = data.bio;
 
             let totalTracks = 0;
