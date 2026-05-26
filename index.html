@@ -1534,7 +1534,6 @@
                     <div class="album-toggle">&#9660;</div>
                 </div>
                 <div class="tracks-container">
-                    ${album.description ? `<div class="album-description">${highlightText(album.description, searchTerm)}</div>` : ''}
                     <div class="tracks-list">
                         ${album.tracks.map((track, i) => createTrackItem(track, i, album.title, album.year)).join('')}
                     </div>
