@@ -1138,6 +1138,39 @@
                 top: 115px; /* Ajuste para barra colapsable en móviles */
             }
         }
+
+        /* Mensaje de Toast Flotante */
+        .toast {
+            position: fixed;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(26, 26, 37, 0.95);
+            border: 1px solid var(--gold);
+            color: var(--text-primary);
+            padding: 0.8rem 1.6rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 2000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+        .toast-icon {
+            color: var(--gold);
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -1247,6 +1280,12 @@
                 <pre id="modalLyricsPre"></pre>
             </div>
         </div>
+    </div>
+
+    <!-- Toast Flotante para notificaciones momentáneas -->
+    <div id="toast" class="toast">
+        <span class="toast-icon">✓</span>
+        <span id="toastMessage">Enlace copiado al portapapeles</span>
     </div>
 
     <script>
@@ -4499,12 +4538,27 @@
             }
         }
 
+        let toastTimeout = null;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            if (toast && toastMessage) {
+                toastMessage.textContent = message;
+                toast.classList.add('show');
+                
+                if (toastTimeout) clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2500);
+            }
+        }
+
         function copyTrackLink(event, trackCleanTitle) {
             if (event) event.stopPropagation();
             const baseUrl = window.location.href.split('#')[0];
             const link = `${baseUrl}#tema-${trackCleanTitle}`;
             navigator.clipboard.writeText(link).then(() => {
-                alert('¡Enlace directo a la canción copiado al portapapeles!');
+                showToast('Enlace de la canción copiado');
             });
         }
 
