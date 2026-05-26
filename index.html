@@ -635,6 +635,509 @@
         .hidden {
             display: none !important;
         }
+
+        /* --- MEJORAS PRÉMIUM --- */
+
+        /* Buscador Mejorado */
+        .search-box-container {
+            position: relative;
+            display: inline-block;
+        }
+        .search-clear {
+            position: absolute;
+            right: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+            display: none;
+        }
+        .search-clear:hover {
+            color: var(--gold);
+        }
+
+        /* Verso del Día (Hero) */
+        .hero-quote-box {
+            background: rgba(26, 26, 37, 0.4);
+            border: 1px solid rgba(212, 168, 83, 0.15);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            max-width: 650px;
+            margin: 1.5rem auto 2.5rem;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.8s ease;
+        }
+        .hero-quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--gold-light);
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+            min-height: 50px;
+            transition: opacity 0.3s ease;
+            white-space: pre-line;
+        }
+        .hero-quote-author {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: opacity 0.3s ease;
+        }
+        .hero-quote-refresh {
+            background: transparent;
+            border: none;
+            color: var(--gold);
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            opacity: 0.7;
+            transition: all 0.3s;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+        .hero-quote-refresh:hover {
+            opacity: 1;
+            background: rgba(212, 168, 83, 0.1);
+        }
+
+        /* Navegación de Décadas (Timeline Jump) */
+        .decade-nav {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            z-index: 90;
+            background: rgba(18, 18, 26, 0.8);
+            padding: 1rem 0.6rem;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .decade-nav-item {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+            cursor: pointer;
+            user-select: none;
+        }
+        .decade-nav-item:hover,
+        .decade-nav-item.active {
+            color: var(--gold);
+            background: rgba(212, 168, 83, 0.15);
+            box-shadow: 0 0 10px rgba(212, 168, 83, 0.2);
+            font-weight: 700;
+        }
+
+        /* Enlaces de Escucha Externos (Spotify / YouTube) */
+        .audio-links {
+            display: inline-flex;
+            gap: 0.4rem;
+            align-items: center;
+            margin-left: 0.8rem;
+            vertical-align: middle;
+        }
+        .audio-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.2rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            transition: all 0.2s;
+            opacity: 0.4;
+            color: var(--text-secondary);
+        }
+        .audio-btn:hover {
+            opacity: 1;
+            transform: scale(1.15);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .audio-btn.spotify:hover {
+            color: #1DB954;
+        }
+        .audio-btn.youtube:hover {
+            color: #FF0000;
+        }
+        .audio-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        /* Resaltado de Búsqueda */
+        mark.search-highlight {
+            background: rgba(212, 168, 83, 0.25);
+            color: var(--gold-light);
+            border-bottom: 2px solid var(--gold);
+            padding: 0.1rem 0.2rem;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* Botón de Progreso Circular (Volver Arriba) */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+        .back-to-top:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(212, 168, 83, 0.2);
+        }
+        .back-to-top.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+        .progress-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotate(-90deg);
+        }
+        .progress-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.05);
+            stroke-width: 3;
+        }
+        .progress-bar {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 3;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.1s linear;
+        }
+        .back-to-top .arrow {
+            font-size: 1.2rem;
+            z-index: 2;
+            transition: transform 0.3s;
+        }
+        .back-to-top:hover .arrow {
+            transform: translateY(-2px);
+        }
+
+        /* Modal de Lectura de Poesía */
+        .lyric-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+        .lyric-modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 8, 0.85);
+            backdrop-filter: blur(8px);
+        }
+        .lyric-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 700px;
+            height: 85vh;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            z-index: 1001;
+            overflow: hidden;
+            animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: all 0.3s;
+        }
+        @keyframes modalSlideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .lyric-modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .lyric-modal-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .lyric-modal-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .lyric-modal-toolbar {
+            padding: 0.8rem 2rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .toolbar-group {
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+        .toolbar-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .toolbar-btn:hover {
+            border-color: var(--gold-dark);
+            color: var(--gold);
+        }
+        .toolbar-btn.active {
+            background: var(--gold);
+            color: var(--bg-primary) !important;
+            border-color: var(--gold);
+            font-weight: 600;
+        }
+        .lyric-modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2.5rem 3rem;
+            display: flex;
+            justify-content: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        .lyric-modal-body pre {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 2;
+            text-align: center;
+            white-space: pre-wrap;
+            color: inherit;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        /* Temas para modal */
+        .lyric-modal.theme-sepia .lyric-modal-content {
+            background-color: #f4ecd8;
+            color: #433422;
+            border-color: #dfd5be;
+        }
+        .lyric-modal.theme-sepia .lyric-modal-header,
+        .lyric-modal.theme-sepia .lyric-modal-toolbar {
+            border-color: #dfd5be;
+            background: rgba(0, 0, 0, 0.03);
+        }
+        .lyric-modal.theme-sepia .lyric-modal-info h3 {
+            color: #8c6239;
+        }
+        .lyric-modal.theme-sepia .lyric-modal-info p,
+        .lyric-modal.theme-sepia .modal-close {
+            color: #705d49;
+        }
+        .lyric-modal.theme-sepia .toolbar-btn {
+            background-color: #efe6ce;
+            border-color: #dfd5be;
+            color: #705d49;
+        }
+        .lyric-modal.theme-sepia .toolbar-btn:hover {
+            border-color: #8c6239;
+            color: #8c6239;
+        }
+        .lyric-modal.theme-sepia .toolbar-btn.active {
+            background-color: #8c6239;
+            color: #f4ecd8 !important;
+            border-color: #8c6239;
+        }
+
+        .lyric-modal.theme-light .lyric-modal-content {
+            background-color: #ffffff;
+            color: #222222;
+            border-color: #e0e0e0;
+        }
+        .lyric-modal.theme-light .lyric-modal-header,
+        .lyric-modal.theme-light .lyric-modal-toolbar {
+            border-color: #e0e0e0;
+            background: rgba(0, 0, 0, 0.02);
+        }
+        .lyric-modal.theme-light .lyric-modal-info h3 {
+            color: #b8923f;
+        }
+        .lyric-modal.theme-light .lyric-modal-info p,
+        .lyric-modal.theme-light .modal-close {
+            color: #666666;
+        }
+        .lyric-modal.theme-light .toolbar-btn {
+            background-color: #f5f5f5;
+            border-color: #e0e0e0;
+            color: #666666;
+        }
+        .lyric-modal.theme-light .toolbar-btn:hover {
+            border-color: #b8923f;
+            color: #b8923f;
+        }
+        .lyric-modal.theme-light .toolbar-btn.active {
+            background-color: #b8923f;
+            color: #ffffff !important;
+            border-color: #b8923f;
+        }
+
+        /* Acciones de Pista */
+        .track-actions {
+            display: flex;
+            gap: 0.4rem;
+            align-items: center;
+        }
+        .track-action-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+            user-select: none;
+        }
+        .track-action-btn:hover {
+            color: var(--gold);
+            border-color: var(--gold-dark);
+            background: rgba(212, 168, 83, 0.1);
+        }
+        .track-action-btn svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+        .track-header {
+            justify-content: space-between;
+        }
+        .track-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex: 1;
+        }
+
+        /* Responsividad de Décadas */
+        @media (max-width: 1024px) {
+            .decade-nav {
+                position: sticky;
+                top: 73px;
+                left: 0;
+                right: 0;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                gap: 0.4rem;
+                width: 100%;
+                border-radius: 0;
+                border: none;
+                border-bottom: 1px solid var(--border);
+                background: rgba(10, 10, 15, 0.95);
+                padding: 0.6rem 1rem;
+                box-shadow: none;
+            }
+            .decade-nav-item {
+                width: auto;
+                height: auto;
+                padding: 0.4rem 0.8rem;
+                border-radius: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lyric-modal-content {
+                height: 95vh;
+                width: 95%;
+            }
+            .lyric-modal-body {
+                padding: 1.5rem 1.5rem;
+            }
+            .lyric-modal-body pre {
+                font-size: 1rem;
+            }
+            .lyric-modal-toolbar {
+                padding: 0.8rem 1rem;
+            }
+            .decade-nav {
+                top: 115px; /* Ajuste para barra colapsable en móviles */
+            }
+        }
     </style>
 </head>
 <body>
@@ -644,6 +1147,15 @@
             <h1>Pablo Milanés</h1>
             <p class="hero-subtitle">La voz eterna de la Nueva Trova Cubana</p>
             <p class="hero-bio" id="bio"></p>
+            
+            <div class="hero-quote-box" id="heroQuoteBox">
+                <span class="hero-quote-author" id="heroQuoteAuthor">Cargando inspiración...</span>
+                <p class="hero-quote-text" id="heroQuoteText"></p>
+                <button class="hero-quote-refresh" onclick="displayRandomQuote()">
+                    🔄 Inspirame con otro verso
+                </button>
+            </div>
+
             <p class="hero-mission">Este archivo reúne la discografía completa de Pablo Milanés —cada álbum, cada canción, cada letra— para preservar su legado y que las nuevas generaciones puedan descubrir y disfrutar su obra.</p>
             <div class="hero-stats">
                 <div class="stat">
@@ -672,7 +1184,10 @@
             <div class="nav-brand">Pablo Milanés</div>
             <div class="nav-controls">
                 <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Buscar canción o álbum...">
+                    <div class="search-box-container">
+                        <input type="text" id="searchInput" placeholder="Buscar canción o álbum...">
+                        <button id="searchClear" class="search-clear" title="Limpiar búsqueda">×</button>
+                    </div>
                 </div>
                 <button class="filter-btn active" data-filter="all">Todos</button>
                 <button class="filter-btn" data-filter="Estudio">Estudio</button>
@@ -693,6 +1208,47 @@
         <p style="margin-top: 1rem; color: var(--gold); font-size: 0.85rem;">by: Lucas M. Vicente & iAs</p>
     </footer>
 
+    <!-- Botón Volver Arriba con Progreso Circular -->
+    <button id="backToTop" class="back-to-top hidden" aria-label="Volver arriba">
+        <svg class="progress-circle" width="48" height="48" viewBox="0 0 48 48">
+            <circle class="progress-bg" cx="24" cy="24" r="20"></circle>
+            <circle class="progress-bar" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"></circle>
+        </svg>
+        <span class="arrow">↑</span>
+    </button>
+
+    <!-- Modal de Lectura de Poesía -->
+    <div id="lyricModal" class="lyric-modal hidden">
+        <div class="lyric-modal-backdrop" onclick="closeLyricModal()"></div>
+        <div class="lyric-modal-content">
+            <div class="lyric-modal-header">
+                <div class="lyric-modal-info">
+                    <h3 id="modalTrackTitle">Título de la Canción</h3>
+                    <p id="modalAlbumTitle">Álbum (1975)</p>
+                </div>
+                <button class="modal-close" onclick="closeLyricModal()">×</button>
+            </div>
+            <div class="lyric-modal-toolbar">
+                <div class="toolbar-group">
+                    <button class="toolbar-btn" onclick="adjustModalText(-1)" title="Reducir letra">A-</button>
+                    <button class="toolbar-btn" onclick="adjustModalText(1)" title="Aumentar letra">A+</button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="toolbar-btn theme-btn active" data-theme="dark" onclick="setModalTheme('dark')">Oscuro</button>
+                    <button class="toolbar-btn theme-btn" data-theme="sepia" onclick="setModalTheme('sepia')">Sepia</button>
+                    <button class="toolbar-btn theme-btn" data-theme="light" onclick="setModalTheme('light')">Claro</button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="toolbar-btn" onclick="copyModalLyrics()" id="modalCopyBtn">Copiar letra</button>
+                    <button class="toolbar-btn" onclick="downloadModalLyrics()">Descargar TXT</button>
+                </div>
+            </div>
+            <div class="lyric-modal-body" id="modalLyricsBody">
+                <pre id="modalLyricsPre"></pre>
+            </div>
+        </div>
+    </div>
+
     <script>
         let data = null;
         let currentFilter = 'all';
@@ -708,6 +1264,10 @@
                 document.getElementById('timeline').innerHTML = '<p style="text-align:center;color:#888;">Error al cargar los datos. Asegúrate de abrir el archivo desde un servidor web.</p>';
             }
         }
+
+        // --- PRÉMIUM JAVASCRIPT ---
+        let currentModalTextSize = 1.1;
+        let activeObserver = null;
 
         function init() {
             document.getElementById('bio').textContent = data.bio;
@@ -729,8 +1289,57 @@
             animateNumber('stat-lyrics', totalLyrics);
             animateNumber('stat-years', yearSpan);
 
+            displayRandomQuote();
             renderTimeline();
             setupEventListeners();
+            setupScrollProgress();
+            
+            // Check hash on load after elements render
+            setTimeout(checkUrlHash, 600);
+        }
+
+        // Verso del Día Dinámico
+        function displayRandomQuote() {
+            const candidates = [];
+            data.albums.forEach(album => {
+                album.tracks.forEach(track => {
+                    if (track.lyrics && track.lyrics.length > 80) {
+                        candidates.push({
+                            title: track.title,
+                            album: album.title,
+                            year: album.year,
+                            lyrics: track.lyrics
+                        });
+                    }
+                });
+            });
+            if (candidates.length === 0) return;
+            const randomTrack = candidates[Math.floor(Math.random() * candidates.length)];
+            
+            // Extract a clean 4-line chunk of lyrics
+            const lines = randomTrack.lyrics.split('\n')
+                .map(l => l.trim())
+                .filter(l => l.length > 0 && !l.includes('©') && !l.includes('Seguir') && !l.startsWith('('));
+                
+            if (lines.length > 0) {
+                const maxLines = Math.min(lines.length, 4);
+                const startIndex = Math.max(0, Math.floor(Math.random() * (lines.length - maxLines)));
+                const snippet = lines.slice(startIndex, startIndex + maxLines).join('\n');
+                
+                const textEl = document.getElementById('heroQuoteText');
+                const authorEl = document.getElementById('heroQuoteAuthor');
+                
+                if (textEl && authorEl) {
+                    textEl.style.opacity = '0';
+                    authorEl.style.opacity = '0';
+                    setTimeout(() => {
+                        textEl.textContent = `"${snippet}"`;
+                        authorEl.textContent = `— ${randomTrack.title} (${randomTrack.album}, ${randomTrack.year})`;
+                        textEl.style.opacity = '1';
+                        authorEl.style.opacity = '1';
+                    }, 300);
+                }
+            }
         }
 
         function animateNumber(id, target) {
@@ -760,18 +1369,22 @@
                         <p>No se encontraron resultados</p>
                     </div>
                 `;
+                renderDecadeNav([]);
                 return;
             }
 
             let currentDecade = null;
+            const uniqueDecades = [];
 
             filteredAlbums.forEach((album, index) => {
                 const decade = Math.floor(album.year / 10) * 10;
 
                 if (decade !== currentDecade) {
                     currentDecade = decade;
+                    uniqueDecades.push(decade);
                     const decadeEl = document.createElement('h2');
                     decadeEl.className = 'decade-header';
+                    decadeEl.id = `decada-${decade}`;
                     decadeEl.textContent = `Década de ${decade}s`;
                     timeline.appendChild(decadeEl);
                 }
@@ -779,6 +1392,8 @@
                 const albumEl = createAlbumCard(album, index);
                 timeline.appendChild(albumEl);
             });
+
+            renderDecadeNav(uniqueDecades);
         }
 
         function getFilteredAlbums() {
@@ -792,7 +1407,10 @@
                 const term = searchTerm.toLowerCase();
                 albums = albums.filter(album => {
                     if (album.title.toLowerCase().includes(term)) return true;
-                    return album.tracks.some(t => t.title.toLowerCase().includes(term));
+                    return album.tracks.some(t => 
+                        t.title.toLowerCase().includes(term) || 
+                        (t.lyrics && t.lyrics.toLowerCase().includes(term))
+                    );
                 }).map(album => {
                     const matchingTracks = album.tracks.filter(t =>
                         t.title.toLowerCase().includes(term) ||
@@ -807,6 +1425,38 @@
             return albums;
         }
 
+        // Resaltado de texto
+        function highlightText(text, search) {
+            if (!search) return escapeHtml(text);
+            const escapedSearch = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            const regex = new RegExp(`(${escapedSearch})`, 'gi');
+            const escapedText = escapeHtml(text);
+            return escapedText.replace(regex, '<mark class="search-highlight">$1</mark>');
+        }
+
+        // Sanitización y utilidades de strings
+        function cleanString(str) {
+            if (!str) return '';
+            return str.toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '') // Quita tildes/acentos
+                .replace(/[^a-z0-9]/g, '-')     // Caracteres especiales a guion
+                .replace(/-+/g, '-')             // Comprime múltiples guiones
+                .replace(/^-|-$/g, '');          // Quita guiones iniciales/finales
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function escapeString(str) {
+            if (!str) return '';
+            return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        }
+
         function createAlbumCard(album, index) {
             const card = document.createElement('div');
             card.className = 'album-card';
@@ -814,16 +1464,29 @@
 
             const typeClass = getTypeClass(album.type);
             const tracksWithLyrics = album.tracks.filter(t => t.lyrics).length;
+            
+            const spotifyUrl = `https://open.spotify.com/search/${encodeURIComponent('Pablo Milanes ' + album.title)}`;
+            const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent('Pablo Milanes ' + album.title)}`;
 
             card.innerHTML = `
-                <div class="album-header" onclick="toggleAlbum(this)">
+                <div class="album-header" onclick="toggleAlbum(this, '${cleanString(album.title)}')">
                     <div class="album-year">${album.year}</div>
                     ${album.cover
                         ? `<img class="album-cover" src="${album.cover}" alt="${album.title}" loading="lazy" onerror="this.outerHTML='<div class=\\'album-cover-placeholder\\'>🎵</div>'">`
                         : `<div class="album-cover-placeholder">🎵</div>`
                     }
                     <div class="album-info">
-                        <div class="album-title">${album.title}</div>
+                        <div style="display:flex; align-items:center; flex-wrap:wrap;">
+                            <div class="album-title">${highlightText(album.title, searchTerm)}</div>
+                            <div class="audio-links">
+                                <a class="audio-btn spotify" href="${spotifyUrl}" target="_blank" onclick="event.stopPropagation();" title="Buscar álbum en Spotify">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.377-1.454-5.37-1.783-8.893-.982-.336.075-.668-.135-.744-.47-.077-.337.135-.668.47-.745 3.856-.88 7.15-.506 9.817 1.13.295.178.387.563.207.86zm1.224-2.72c-.226.367-.706.487-1.074.26-2.72-1.672-6.87-2.157-10.077-1.182-.413.125-.85-.107-.975-.522-.125-.413.107-.85.522-.975 3.667-1.11 8.232-.574 11.365 1.354.367.226.488.707.26 1.075zm.106-2.833C14.484 8.79 8.82 8.603 5.533 9.6c-.51.155-1.046-.135-1.2-.647-.156-.51.133-1.047.646-1.202 3.774-1.146 10.015-.928 14.07 1.48.46.273.61.87.337 1.33-.273.46-.87.61-1.33.337z"/></svg>
+                                </a>
+                                <a class="audio-btn youtube" href="${youtubeUrl}" target="_blank" onclick="event.stopPropagation();" title="Buscar álbum en YouTube">
+                                    <svg viewBox="0 0 24 24"><path d="M23.498 6.163c-.272-1.016-1.07-1.815-2.085-2.087C19.56 3.6 12 3.6 12 3.6s-7.56 0-9.413.476c-1.016.272-1.813 1.071-2.085 2.087C0 8.015 0 12 0 12s0 3.985.476 5.837c.272 1.016 1.07 1.813 2.085 2.085 1.853.476 9.413.476 9.413.476s7.56 0 9.413-.476c1.01-.272 1.812-1.07 2.085-2.085C24 15.985 24 12 24 12s0-3.985-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                </a>
+                            </div>
+                        </div>
                         <div class="album-meta">
                             <span class="album-type ${typeClass}">${album.type}</span>
                             <span class="track-count">${album.tracks.length} canciones · ${tracksWithLyrics} con letra</span>
@@ -832,9 +1495,9 @@
                     <div class="album-toggle">&#9660;</div>
                 </div>
                 <div class="tracks-container">
-                    ${album.description ? `<div class="album-description">${album.description}</div>` : ''}
+                    ${album.description ? `<div class="album-description">${highlightText(album.description, searchTerm)}</div>` : ''}
                     <div class="tracks-list">
-                        ${album.tracks.map((track, i) => createTrackItem(track, i)).join('')}
+                        ${album.tracks.map((track, i) => createTrackItem(track, i, album.title, album.year)).join('')}
                     </div>
                 </div>
             `;
@@ -842,16 +1505,41 @@
             return card;
         }
 
-        function createTrackItem(track, index) {
+        function createTrackItem(track, index, albumTitle, albumYear) {
             const hasLyrics = track.lyrics && track.lyrics.length > 0;
+            const highlightedTitle = highlightText(track.title, searchTerm);
+            const spotifyUrl = `https://open.spotify.com/search/${encodeURIComponent('Pablo Milanes ' + track.title)}`;
+            const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent('Pablo Milanes ' + track.title)}`;
+            
+            const trackId = `tema-${cleanString(track.title)}`;
+            
             return `
-                <div class="track-item" onclick="toggleTrack(this)">
+                <div class="track-item" id="${trackId}" onclick="handleTrackClick(event, this, '${escapeString(track.title)}', '${escapeString(albumTitle)}', ${albumYear})">
                     <div class="track-header">
-                        <span class="track-number">${String(index + 1).padStart(2, '0')}</span>
-                        <span class="track-title">${track.title}</span>
-                        ${hasLyrics ? '<span class="has-lyrics-badge">Letra</span>' : ''}
+                        <div class="track-title-wrapper">
+                            <span class="track-number">${String(index + 1).padStart(2, '0')}</span>
+                            <span class="track-title">${highlightedTitle}</span>
+                            ${hasLyrics ? '<span class="has-lyrics-badge">Letra</span>' : ''}
+                            <div class="audio-links">
+                                <a class="audio-btn spotify" href="${spotifyUrl}" target="_blank" onclick="event.stopPropagation();" title="Escuchar en Spotify">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.377-1.454-5.37-1.783-8.893-.982-.336.075-.668-.135-.744-.47-.077-.337.135-.668.47-.745 3.856-.88 7.15-.506 9.817 1.13.295.178.387.563.207.86zm1.224-2.72c-.226.367-.706.487-1.074.26-2.72-1.672-6.87-2.157-10.077-1.182-.413.125-.85-.107-.975-.522-.125-.413.107-.85.522-.975 3.667-1.11 8.232-.574 11.365 1.354.367.226.488.707.26 1.075zm.106-2.833C14.484 8.79 8.82 8.603 5.533 9.6c-.51.155-1.046-.135-1.2-.647-.156-.51.133-1.047.646-1.202 3.774-1.146 10.015-.928 14.07 1.48.46.273.61.87.337 1.33-.273.46-.87.61-1.33.337z"/></svg>
+                                </a>
+                                <a class="audio-btn youtube" href="${youtubeUrl}" target="_blank" onclick="event.stopPropagation();" title="Escuchar en YouTube">
+                                    <svg viewBox="0 0 24 24"><path d="M23.498 6.163c-.272-1.016-1.07-1.815-2.085-2.087C19.56 3.6 12 3.6 12 3.6s-7.56 0-9.413.476c-1.016.272-1.813 1.071-2.085 2.087C0 8.015 0 12 0 12s0 3.985.476 5.837c.272 1.016 1.07 1.813 2.085 2.085 1.853.476 9.413.476 9.413.476s7.56 0 9.413-.476c1.01-.272 1.812-1.07 2.085-2.085C24 15.985 24 12 24 12s0-3.985-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="track-actions">
+                            ${hasLyrics ? `
+                            <button class="track-action-btn" onclick="openLyricModal(event, '${escapeString(track.title)}', '${escapeString(albumTitle)}', ${albumYear}, '${escapeString(track.lyrics)}')" title="Modo Lectura Completa">
+                                📖
+                            </button>` : ''}
+                            <button class="track-action-btn" onclick="copyTrackLink(event, '${cleanString(track.title)}')" title="Copiar enlace a esta canción">
+                                🔗
+                            </button>
+                        </div>
                     </div>
-                    ${hasLyrics ? `<div class="track-lyrics"><pre>${escapeHtml(track.lyrics)}</pre></div>` : ''}
+                    ${hasLyrics ? `<div class="track-lyrics"><pre>${highlightText(track.lyrics, searchTerm)}</pre></div>` : ''}
                 </div>
             `;
         }
@@ -866,28 +1554,294 @@
             }
         }
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        function toggleAlbum(header) {
+        function toggleAlbum(header, albumCleanTitle) {
             const card = header.closest('.album-card');
-            card.classList.toggle('open');
+            const isOpen = card.classList.contains('open');
+            if (!isOpen) {
+                card.classList.add('open');
+                updateUrlHash(`album-${albumCleanTitle}`);
+            } else {
+                card.classList.remove('open');
+                updateUrlHash('');
+            }
         }
 
-        function toggleTrack(item) {
+        function handleTrackClick(event, item, trackTitle, albumTitle, albumYear) {
+            if (event.target.closest('.track-action-btn') || event.target.closest('.audio-btn')) {
+                return;
+            }
             const lyrics = item.querySelector('.track-lyrics');
             if (lyrics) {
-                item.classList.toggle('expanded');
+                const wasExpanded = item.classList.contains('expanded');
+                item.closest('.tracks-list').querySelectorAll('.track-item').forEach(t => t.classList.remove('expanded'));
+                
+                if (!wasExpanded) {
+                    item.classList.add('expanded');
+                    updateUrlHash(`tema-${cleanString(trackTitle)}`);
+                } else {
+                    const albumCard = item.closest('.album-card');
+                    const albumTitleClean = cleanString(albumCard.querySelector('.album-title').textContent);
+                    updateUrlHash(`album-${albumTitleClean}`);
+                }
             }
+        }
+
+        // --- NAVEGACIÓN POR DÉCADAS DINÁMICA ---
+        function renderDecadeNav(decades) {
+            let nav = document.getElementById('decadeNav');
+            if (!nav) {
+                nav = document.createElement('div');
+                nav.id = 'decadeNav';
+                nav.className = 'decade-nav';
+                document.body.appendChild(nav);
+            }
+            
+            if (decades.length === 0) {
+                nav.style.display = 'none';
+                return;
+            } else {
+                nav.style.display = 'flex';
+            }
+            
+            nav.innerHTML = decades.map(dec => `
+                <a class="decade-nav-item" data-decade="${dec}" onclick="scrollToDecade(${dec})">${String(dec).slice(2)}s</a>
+            `).join('');
+            
+            setupDecadeObserver();
+        }
+
+        function scrollToDecade(decade) {
+            const headers = document.querySelectorAll('.decade-header');
+            for (const h of headers) {
+                if (h.textContent.includes(String(decade))) {
+                    const yOffset = -90;
+                    const y = h.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                    break;
+                }
+            }
+        }
+
+        function setupDecadeObserver() {
+            if (activeObserver) activeObserver.disconnect();
+            
+            const headers = document.querySelectorAll('.decade-header');
+            const items = document.querySelectorAll('.decade-nav-item');
+            
+            activeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const match = entry.target.textContent.match(/\d+/);
+                        if (match) {
+                            const decText = match[0];
+                            items.forEach(item => {
+                                if (item.dataset.decade === decText) {
+                                    item.classList.add('active');
+                                } else {
+                                    item.classList.remove('active');
+                                }
+                            });
+                        }
+                    }
+                });
+            }, { rootMargin: '-10% 0px -75% 0px' });
+            
+            headers.forEach(h => activeObserver.observe(h));
+        }
+
+        // --- LÓGICA DE MODAL DE LECTURA DE POESÍA ---
+        function openLyricModal(event, trackTitle, albumTitle, albumYear, lyrics) {
+            if (event) event.stopPropagation();
+            
+            const modal = document.getElementById('lyricModal');
+            document.getElementById('modalTrackTitle').textContent = trackTitle;
+            document.getElementById('modalAlbumTitle').textContent = `${albumTitle} (${albumYear})`;
+            document.getElementById('modalLyricsPre').innerHTML = escapeHtml(lyrics);
+            
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                if (btn.dataset.theme === 'dark') btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            
+            modal.className = 'lyric-modal theme-dark';
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLyricModal() {
+            const modal = document.getElementById('lyricModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function setModalTheme(theme) {
+            const modal = document.getElementById('lyricModal');
+            modal.className = `lyric-modal theme-${theme}`;
+            
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                if (btn.dataset.theme === theme) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+        }
+
+        function adjustModalText(direction) {
+            currentModalTextSize += direction * 0.1;
+            currentModalTextSize = Math.max(0.8, Math.min(2.0, currentModalTextSize));
+            document.getElementById('modalLyricsPre').style.fontSize = `${currentModalTextSize}rem`;
+        }
+
+        // Copiar letras
+        function copyModalLyrics() {
+            const text = document.getElementById('modalLyricsPre').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const copyBtn = document.getElementById('modalCopyBtn');
+                const oldText = copyBtn.textContent;
+                copyBtn.textContent = '¡Copiado! ✓';
+                copyBtn.classList.add('active');
+                setTimeout(() => {
+                    copyBtn.textContent = oldText;
+                    copyBtn.classList.remove('active');
+                }, 2000);
+            });
+        }
+
+        // Descargar letras en TXT
+        function downloadModalLyrics() {
+            const trackTitle = document.getElementById('modalTrackTitle').textContent;
+            const text = document.getElementById('modalLyricsPre').textContent;
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Pablo Milanes - ${trackTitle}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // --- LÓGICA DE DEEP LINKING (URL HASHES) ---
+        function updateUrlHash(hash) {
+            if (hash) {
+                history.replaceState(null, null, `#${hash}`);
+            } else {
+                history.replaceState(null, null, window.location.pathname + window.location.search);
+            }
+        }
+
+        function copyTrackLink(event, trackCleanTitle) {
+            if (event) event.stopPropagation();
+            const baseUrl = window.location.href.split('#')[0];
+            const link = `${baseUrl}#tema-${trackCleanTitle}`;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('¡Enlace directo a la canción copiado al portapapeles!');
+            });
+        }
+
+        function checkUrlHash() {
+            const hash = window.location.hash;
+            if (!hash) return;
+            
+            const id = hash.substring(1);
+            if (id.startsWith('album-')) {
+                const albumCleanTitle = id.replace('album-', '');
+                document.querySelectorAll('.album-card').forEach(card => {
+                    const titleEl = card.querySelector('.album-title');
+                    if (titleEl && cleanString(titleEl.textContent) === albumCleanTitle) {
+                        card.classList.add('open');
+                        setTimeout(() => {
+                            const yOffset = -90;
+                            const y = card.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                        }, 300);
+                    }
+                });
+            } else if (id.startsWith('tema-')) {
+                const trackCleanTitle = id.replace('tema-', '');
+                
+                let found = false;
+                data.albums.forEach(album => {
+                    album.tracks.forEach(track => {
+                        if (cleanString(track.title) === trackCleanTitle) {
+                            found = true;
+                            document.querySelectorAll('.album-card').forEach(card => {
+                                const titleEl = card.querySelector('.album-title');
+                                if (titleEl && titleEl.textContent === album.title) {
+                                    card.classList.add('open');
+                                    setTimeout(() => {
+                                        const trackItem = card.querySelector(`#tema-${trackCleanTitle}`);
+                                        if (trackItem) {
+                                            trackItem.classList.add('expanded');
+                                            const yOffset = -120;
+                                            const y = trackItem.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                                            window.scrollTo({ top: y, behavior: 'smooth' });
+                                            
+                                            trackItem.style.boxShadow = '0 0 20px rgba(212, 168, 83, 0.4)';
+                                            trackItem.style.borderColor = 'var(--gold)';
+                                            setTimeout(() => {
+                                                trackItem.style.boxShadow = '';
+                                                trackItem.style.borderColor = '';
+                                            }, 2000);
+                                        }
+                                    }, 500);
+                                }
+                            });
+                        }
+                    });
+                });
+            }
+        }
+
+        // --- BOTÓN VOLVER ARRIBA Y PROGRESO ---
+        function updateScrollProgress() {
+            const backToTop = document.getElementById('backToTop');
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            
+            if (winScroll > 400) {
+                backToTop.classList.remove('hidden');
+            } else {
+                backToTop.classList.add('hidden');
+            }
+            
+            const scrolled = (winScroll / height) * 100;
+            const r = 20;
+            const circumference = 2 * Math.PI * r;
+            const offset = circumference - (scrolled / 100) * circumference;
+            
+            const progressBar = backToTop.querySelector('.progress-bar');
+            if (progressBar) {
+                progressBar.style.strokeDashoffset = offset;
+            }
+        }
+
+        function setupScrollProgress() {
+            window.addEventListener('scroll', updateScrollProgress);
+            document.getElementById('backToTop').addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         }
 
         function setupEventListeners() {
             const searchInput = document.getElementById('searchInput');
+            const searchClear = document.getElementById('searchClear');
+            
             searchInput.addEventListener('input', (e) => {
                 searchTerm = e.target.value.trim();
+                if (searchTerm) {
+                    searchClear.style.display = 'block';
+                    renderTimeline();
+                    document.querySelectorAll('.album-card').forEach(card => card.classList.add('open'));
+                } else {
+                    searchClear.style.display = 'none';
+                    renderTimeline();
+                }
+            });
+
+            searchClear.addEventListener('click', () => {
+                searchInput.value = '';
+                searchTerm = '';
+                searchClear.style.display = 'none';
                 renderTimeline();
             });
 
@@ -899,6 +1853,8 @@
                     renderTimeline();
                 });
             });
+            
+            window.addEventListener('hashchange', checkUrlHash);
         }
 
         loadData();
