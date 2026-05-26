@@ -4340,6 +4340,9 @@
                         </div>
                         <div class="track-actions">
                             ${hasLyrics ? `
+                            <button class="track-action-btn" onclick="copyTrackLyrics(event, '${escapeString(track.title)}', '${escapeString(track.lyrics)}')" title="Copiar letra completa">
+                                📋
+                            </button>
                             <button class="track-action-btn" onclick="openLyricModal(event, '${escapeString(track.title)}', '${escapeString(albumTitle)}', ${albumYear}, '${escapeString(track.lyrics)}')" title="Modo Lectura Completa">
                                 📖
                             </button>` : ''}
@@ -4559,6 +4562,13 @@
             const link = `${baseUrl}#tema-${trackCleanTitle}`;
             navigator.clipboard.writeText(link).then(() => {
                 showToast('Enlace de la canción copiado');
+            });
+        }
+
+        function copyTrackLyrics(event, trackTitle, lyrics) {
+            if (event) event.stopPropagation();
+            navigator.clipboard.writeText(lyrics).then(() => {
+                showToast(`Letra de "${trackTitle}" copiada`);
             });
         }
 
