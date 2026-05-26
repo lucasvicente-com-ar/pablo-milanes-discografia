@@ -1570,10 +1570,10 @@
                         </div>
                         <div class="track-actions">
                             ${hasLyrics ? `
-                            <button class="track-action-btn" onclick="copyTrackLyrics(event, '${escapeString(track.title)}', '${escapeString(track.lyrics)}')" title="Copiar letra completa">
+                            <button class="track-action-btn" onclick="copyTrackLyrics(event, this, '${escapeString(track.title)}')" title="Copiar letra completa">
                                 📋
                             </button>
-                            <button class="track-action-btn" onclick="openLyricModal(event, '${escapeString(track.title)}', '${escapeString(albumTitle)}', ${albumYear}, '${escapeString(track.lyrics)}')" title="Modo Lectura Completa">
+                            <button class="track-action-btn" onclick="openLyricModal(event, this, '${escapeString(track.title)}', '${escapeString(albumTitle)}', ${albumYear})" title="Modo Lectura Completa">
                                 📖
                             </button>` : ''}
                             <button class="track-action-btn" onclick="copyTrackLink(event, '${cleanString(track.title)}')" title="Copiar enlace a esta canción">
@@ -1692,8 +1692,12 @@
         }
 
         // --- LÓGICA DE MODAL DE LECTURA DE POESÍA ---
-        function openLyricModal(event, trackTitle, albumTitle, albumYear, lyrics) {
+        function openLyricModal(event, btnElement, trackTitle, albumTitle, albumYear) {
             if (event) event.stopPropagation();
+            
+            const trackItem = btnElement.closest('.track-item');
+            const preElement = trackItem.querySelector('.track-lyrics pre');
+            const lyrics = preElement ? preElement.textContent : '';
             
             const modal = document.getElementById('lyricModal');
             document.getElementById('modalTrackTitle').textContent = trackTitle;
@@ -1795,8 +1799,12 @@
             });
         }
 
-        function copyTrackLyrics(event, trackTitle, lyrics) {
+        function copyTrackLyrics(event, btnElement, trackTitle) {
             if (event) event.stopPropagation();
+            const trackItem = btnElement.closest('.track-item');
+            const preElement = trackItem.querySelector('.track-lyrics pre');
+            const lyrics = preElement ? preElement.textContent : '';
+            
             navigator.clipboard.writeText(lyrics).then(() => {
                 showToast(`Letra de "${trackTitle}" copiada`);
             });
