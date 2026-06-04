@@ -18,8 +18,9 @@ Este repositorio reúne **toda su discografía oficial** en un solo lugar: cada 
 | Canciones | 586 |
 | Con letras completas | 558 (95.2%) |
 | Portadas originales | 48 |
+| Con datos de autor/compositor | 586 (100%) — 92 autores distintos |
 | Período cubierto | 1973 – 2021 |
-| Fuente de datos | Múltiples fuentes: [milanespablo.com](https://www.milanespablo.com/discografia/), Genius, Cancioneros, CMTV, Musixmatch, letras.com |
+| Fuente de datos | Múltiples fuentes: [milanespablo.com](https://www.milanespablo.com/discografia/), [Cancioneros](https://www.cancioneros.com), Genius, CMTV, Musixmatch, letras.com |
 
 ## Discografía cronológica
 
